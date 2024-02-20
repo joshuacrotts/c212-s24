@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MapExamplesTest {
 
+
   @Test
   void testMode() {
-    assertEquals(Set.of(),
-                 MapExamples.mode(List.of()));
-    assertEquals(Set.of(),
-                 MapExamples.mode(List.of()));
-    assertEquals(Set.of(),
-                 MapExamples.mode(List.of()));
+    assertAll(
+      () -> assertEquals(Set.of(), MapExamples.mode(List.of())),
+      () -> assertEquals(Set.of(3), MapExamples.mode(List.of(4, 5, 3, 2, 1, 3, 3, 4, 3))),
+      () -> assertEquals(Set.of(2, 3), MapExamples.mode(List.of(2, 3, 2, 3, 2, 3, 1, 3, 2))),
+      () -> assertEquals(Set.of(2), MapExamples.mode(List.of(2, 2, 2, 2, 2, 2, 2, 2, 2))));
   }
 
   @Test
@@ -35,8 +35,9 @@ class MapExamplesTest {
 
   @Test
   void testFirstUniqueLetter() {
-    assertEquals("", MapExamples.firstUniqueLetter(""));
-    assertEquals("", MapExamples.firstUniqueLetter(""));
-    assertEquals("", MapExamples.firstUniqueLetter(""));
+    assertAll(
+      () -> assertEquals("m", MapExamples.firstUniqueLetter("Morning")),
+      () -> assertEquals("w", MapExamples.firstUniqueLetter("sweeps")),
+      () -> assertEquals("", MapExamples.firstUniqueLetter("Abra-cadabracad!")));
   }
 }
